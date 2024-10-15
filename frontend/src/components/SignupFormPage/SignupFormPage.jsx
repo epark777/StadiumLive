@@ -42,9 +42,9 @@ function SignupFormPage() {
   };
 
   return (
-    <>
+    <div className='signup'>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='signup-form'>
         <label>
           Email
           <input
@@ -104,10 +104,10 @@ function SignupFormPage() {
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 
