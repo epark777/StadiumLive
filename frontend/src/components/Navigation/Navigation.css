@@ -1,0 +1,13 @@
+.profile-dropdown.hidden {
+    display: none;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  button {
+    background: lightblue;
+    border: black;
+    cursor: pointer;
+  }
