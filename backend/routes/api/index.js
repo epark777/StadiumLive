@@ -29,7 +29,7 @@ router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
 
 router.post("/test", (req, res) => {
-  console.log("hello world")
+  
   res.json({ requestBody: req.body });
 });
 
