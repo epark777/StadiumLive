@@ -4,8 +4,6 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { MdOutlineStadium } from 'react-icons/md';
 
-// <MdOutlineStadium />
-
 function Navigation({ isLoaded }) {
    const sessionUser = useSelector((state) => state.session.user);
 
@@ -28,15 +26,3 @@ function Navigation({ isLoaded }) {
 
 export default Navigation;
 
-{
-   /* <ul>
-<li>
-  <NavLink to="/">Home</NavLink>
-</li>
-{isLoaded && (
-  <li>
-    <ProfileButton user={sessionUser} />
-  </li>
-)}
-</ul> */
-}
