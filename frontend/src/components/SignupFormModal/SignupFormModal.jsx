@@ -14,7 +14,7 @@ function SignupFormModal() {
    const [confirmPassword, setConfirmPassword] = useState('');
    const [errors, setErrors] = useState({});
    const { closeModal } = useModal();
-   const [disabled, setDisabled] = useState(false);
+   const [disabled, setDisabled] = useState(true);
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -29,7 +29,10 @@ function SignupFormModal() {
                password,
             }),
          )
-            .then(closeModal)
+            .then(() => {
+              resetErrors();
+              closeModal();
+            }) 
             .catch(async (res) => {
                const data = await res.json();
                if (data?.errors) {
@@ -58,11 +61,21 @@ function SignupFormModal() {
       }
    }, [email, username, firstName, lastName, password, confirmPassword]);
 
+   const resetErrors = () => {
+      setErrors({});
+      setEmail('');
+      setUsername('');
+      setFirstName('');
+      setLastName('');
+      setPassword('');
+      setConfirmPassword('');
+   };
+
    return (
       <div className="signup-page">
-         <h1 className='signup-header'>Sign Up</h1>
+         <h1 className="signup-header">Sign Up</h1>
          <form onSubmit={handleSubmit} className="signup-form">
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="text"
                   placeholder="Email"
@@ -72,7 +85,7 @@ function SignupFormModal() {
                />
             </label>
             {errors.email && <p>{errors.email}</p>}
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="text"
                   placeholder="Username"
@@ -82,7 +95,7 @@ function SignupFormModal() {
                />
             </label>
             {errors.username && <p>{errors.username}</p>}
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="text"
                   placeholder="First Name"
@@ -92,7 +105,7 @@ function SignupFormModal() {
                />
             </label>
             {errors.firstName && <p>{errors.firstName}</p>}
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="text"
                   placeholder="Last Name"
@@ -102,7 +115,7 @@ function SignupFormModal() {
                />
             </label>
             {errors.lastName && <p>{errors.lastName}</p>}
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="password"
                   placeholder="Password"
@@ -112,7 +125,7 @@ function SignupFormModal() {
                />
             </label>
             {errors.password && <p>{errors.password}</p>}
-            <label className='signup-label'>
+            <label className="signup-label">
                <input
                   type="password"
                   placeholder="Confirm Password"
