@@ -1,0 +1,176 @@
+/* Main container for the spot view */
+.spot-view-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-row {
+  display: grid;
+  align-items: start;
+  justify-self: start;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 20px;
+}
+
+/* Header section for spot details */
+.spot-header {
+  text-align: left;
+}
+
+.spot-name {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.spot-location {
+  margin-top: 10px;
+}
+
+.city-state {
+  font-size: 24px;
+  color: #555;
+}
+
+.spot-country {
+  font-size: 20px;
+  color: #888;
+}
+
+/* Images section */
+.spot-images-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.spot-preview-image {
+  flex: 3;
+}
+
+.preview-img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Non-preview images grid - align on the right */
+.non-preview-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  flex: 2;
+}
+
+.non-prev {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Spot info and description section */
+.spot-info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: none; 
+}
+
+/* Description section */
+.spot-desc {
+  flex: 3;
+}
+
+.spot-desc h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.spot-desc p {
+  font-size: 20px;
+  color: #555;
+}
+
+/* Spot booking section - moved to the right */
+.spot-booking-container {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Styling for the price section */
+.spot-price h2 {
+  font-size: 30px;
+  font-weight: bold;
+  display: inline;
+}
+
+.spot-price h2::after {
+  content: " / night";
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
+}
+
+/* Reviews and ratings section */
+.spot-reviews-ratings {
+  font-size: 18px;
+  color: #666;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Star rating icon */
+.spot-reviews-ratings::before {
+  content: '★';
+  color: #f39c12;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+/* Reserve button */
+.reserve-button {
+  background-color: #ff5a5f;
+  color: white;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.reserve-button:hover {
+  background-color: #ff383d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .spot-images-container {
+    flex-direction: column;
+  }
+
+  .non-preview-image {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .spot-info-container {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .spot-price,
+  .spot-reviews-ratings {
+    text-align: left;
+    margin-top: 20px;
+  }
+}

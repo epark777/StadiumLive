@@ -13,23 +13,23 @@ const imgs = [
   },
   {
     spotId: 2,
-    url: "https://a0.muscache.com/im/pictures/3310d2f2-5e1c-4940-abbf-b215a1b36614.jpg?im_w=720",
-    preview: false,
+    url: "https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w2208/mlb/ihqtqmjae9cbhwf2fq7c.jpg",
+    preview: true,
   },
   {
     spotId: 3,
     url: "https://a0.muscache.com/im/pictures/e4dc4b75-0936-49ec-a773-046d3ade0474.jpg?im_w=720",
-    preview: false,
+    preview: true,
   },
   {
-    spotId: 1,
+    spotId: 4,
     url: "https://a0.muscache.com/im/pictures/miso/Hosting-13646016/original/571a826f-3550-4ecb-b451-adf97ec9d78d.jpeg?im_w=720",
     preview: true,
   },
   {
     spotId: 5,
     url: "https://a0.muscache.com/im/pictures/airflow/Hosting-558022356946357962/original/77a86fab-9361-4ece-b126-2789f74385b1.jpg?im_w=720",
-    preview: false,
+    preview: true,
   },
 ];
 

@@ -12,7 +12,7 @@ const imgs = [
   },
   {
     reviewId: 2,
-    url: "https://a0.muscache.com/im/pictures/073c9ee3-df86-441f-a7da-e7fa1b0a8457.jpg?im_w=1920",
+    url: "https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w2208/mlb/ihqtqmjae9cbhwf2fq7c.jpg",
   },
   {
     reviewId: 3,

@@ -1,0 +1,138 @@
+.home-container {
+   width: 100%;
+   padding: 20px;
+   box-sizing: border-box;
+}
+
+.home-container h1 {
+   text-align: center;
+   font-size: 50px;
+   margin-bottom: 20px;
+   font-weight: bold;
+   color: #333;
+}
+
+
+.spots-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 16px;
+   padding: 24px;
+   justify-content: center;
+   align-items: stretch;
+}
+
+.spot-link {
+   text-decoration: none;
+   color: inherit;
+   transition: transform 0.2s ease;
+}
+
+.spot-link:hover {
+   transform: translateY(-5px);
+}
+
+.spot-box {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid #ddd;
+   border-radius: 10px;
+   overflow: hidden;
+   background-color: #fff;
+   transition: box-shadow 0.2s ease;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   height: 100%;
+}
+
+.spot-box:hover {
+   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.spot-name h2 {
+   padding: 16px;
+   text-align: center;
+   font-size: 30px;
+   font-weight: bold;
+   color: #333;
+}
+
+.spot-image-box {
+   position: relative;
+   width: 100%;
+   padding-top: 70%;
+   overflow: hidden;
+   flex-shrink: 0;
+}
+
+.spot-image {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.2s ease;
+}
+
+.spot-box:hover .spot-image {
+   transform: scale(1.05);
+}
+
+.spot-details-box {
+   padding: 16px;
+   text-align: center;
+}
+
+.spot-location p {
+   margin: 0;
+   font-size: 20px;
+   color: #555;
+}
+
+.spot-rating-box {
+   text-align: center;
+   font-size: 20px;
+   color: #f39c12;
+   margin-top: 8px;
+}
+
+.spot-price {
+   text-align: center;
+   font-size: 20px;
+   font-weight: bold;
+   padding: 10px;
+   color: #333;
+}
+
+@media (max-width: 768px) {
+   .spots-grid {
+      grid-template-columns: 1fr;
+   }
+
+   .home-container h1 {
+      font-size: 1.8rem;
+   }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+   .spots-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+   .spots-grid {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media (min-width: 1401px) {
+   .spots-grid {
+      grid-template-columns: repeat(4, 1fr);
+   }
+
+   .spot-box {
+      max-width: 360px;
+      margin: 0 auto;
+   }
+}

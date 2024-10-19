@@ -66,9 +66,11 @@ const handleImages = async (spotId, images) => {
 
 export const getAllSpots = () => async (dispatch) => {
    const res = await csrfFetch('/api/spots');
+   console.log("fetching all spots")
    if (res.ok) {
       const data = await res.json();
       dispatch(fetchAllSpots(data.Spots));
+      console.log("fetched spots:", data.Spots)
       return data.Spots;
    } else {
       const error = await res.json();
@@ -88,12 +90,12 @@ export const getCurrentSpots = () => async (dispatch) => {
    }
 };
 
-export const getSpotById = (spotId) => async (dispatch) => {
-   const res = await csrfFetch(`/api/spots/${spotId}`);
+export const getSpotById = (id) => async (dispatch) => {
+   const res = await csrfFetch(`/api/spots/${id}`);
    if (res.ok) {
       const data = await res.json();
       dispatch(fetchByID(data[0]));
-      return data;
+      return data[0];
    } else {
       const error = await res.json();
       return error;
@@ -206,14 +208,16 @@ export const deleteReview = (reviewId, spotId) => async (dispatch) => {
 
 const initialState = {};
 
-const spotReducer = (state = initialState, action) => {
+const spotsReducer = (state = initialState, action) => {
    switch (action.type) {
       case FETCH_SPOTS: {
-         const spots = {};
+        console.log("reducer payload:", action.payload)
+         const newState = {...state};
          action.payload.forEach((spot) => {
-            spots[spot.id] = spot;
+            newState[spot.id] = spot;
          });
-         return {...state, spots};
+         console.log("New state after FETCH_SPOTS:", newState);
+         return newState;
       }
       case ADD_SPOT:
          return { ...state, [action.payload.id]: action.payload };
@@ -236,6 +240,7 @@ const spotReducer = (state = initialState, action) => {
             },
          };
 
+
       case FETCH_REVIEWS:
          return {
             ...state,
@@ -250,4 +255,4 @@ const spotReducer = (state = initialState, action) => {
    }
 };
 
-export default spotReducer;
+export default spotsReducer;
