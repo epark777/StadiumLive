@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as spotActions from '../../store/spots';
 import { NavLink } from 'react-router-dom';
 import './Spots.css';
@@ -7,15 +7,15 @@ import './Spots.css';
 export default function Spots() {
    const dispatch = useDispatch();
 
-
    const spots = useSelector((state) => state.spots);
 
    const spotsArray = spots ? Object.values(spots) : [];
 
+   useEffect(() => {
+      dispatch(spotActions.getAllSpots());
+   }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(spotActions.getAllSpots())
-    }, [dispatch])
+   const [showTooltip, setShowTooltip] = useState(null);
 
    if (!spotsArray.length || !spots) {
       return <p>No spots available!</p>;
@@ -31,6 +31,9 @@ export default function Spots() {
                   to={`/spots/${spot.id}`}
                   key={spot.id}
                   className="spot-link"
+                  onMouseEnter={() => setShowTooltip(spot.id)}
+                  onMouseLeave={() => setShowTooltip(null)}
+                  style={{cursor: 'pointer'}}
                >
                   <div className="spot-box">
                      <div className="spot-name">
@@ -47,7 +50,9 @@ export default function Spots() {
 
                      <div className="spot-details-box">
                         <div className="spot-location">
-                           <p>{spot.city}, {spot.state}</p>
+                           <p>
+                              {spot.city}, {spot.state}
+                           </p>
                         </div>
                      </div>
 
@@ -55,7 +60,10 @@ export default function Spots() {
                         {spot.avgRating ? spot.avgRating.toFixed(2) : 'NEW'}
                      </div>
 
-                     <div className="spot-price">Per night: ${spot.price}</div>
+                     <div className="spot-price">${spot.price}</div>
+                     {showTooltip === spot.id && (
+                        <div className="tooltip">{spot.name}</div>
+                     )}
                   </div>
                </NavLink>
             ))}

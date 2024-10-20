@@ -3,6 +3,8 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  max-width: 90%;
+
 }
 
 .bottom-row {
@@ -107,13 +109,6 @@
   font-size: 30px;
   font-weight: bold;
   display: inline;
-}
-
-.spot-price h2::after {
-  content: " / night";
-  font-weight: normal;
-  font-size: 20px;
-  color: #666;
 }
 
 /* Reviews and ratings section */

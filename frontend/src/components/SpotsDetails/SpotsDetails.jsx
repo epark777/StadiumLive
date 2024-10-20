@@ -33,7 +33,6 @@ export default function SpotsDetails() {
       state,
       country,
       previewImage,
-      Owner,
       description,
       price,
       avgStarRating,
@@ -41,6 +40,11 @@ export default function SpotsDetails() {
    } = spot;
 
    const spotImages = spot.SpotImages;
+
+   const {firstName, lastName} = spot.Owner || {
+      firstName: null,
+      lastName: null
+   }
 
    return (
       <div className="spot-view-container">
@@ -75,7 +79,7 @@ export default function SpotsDetails() {
                <div className="spot-info-container">
                   <div className="spot-desc">
                      <h2>
-                        Hosted by: {Owner.firstName} {Owner.lastName}
+                        Hosted by: {firstName} {lastName} 
                      </h2>
                      <p>{description}</p>
                   </div>
@@ -83,11 +87,11 @@ export default function SpotsDetails() {
 
                <div className="spot-booking-container">
                   <div className="spot-price">
-                     <h2>Price Per Night: ${price}</h2>
+                     <h2>${price}</h2>
                   </div>
                   <div className="spot-reviews-ratings">
                      {numReviews
-                        ? `${avgStarRating.toFixed(2)} - ${numReviews} review${
+                        ? `${avgStarRating.toFixed(2)} · ${numReviews} review${
                              numReviews !== 1 ? 's' : ''
                           }`
                         : 'NEW'}

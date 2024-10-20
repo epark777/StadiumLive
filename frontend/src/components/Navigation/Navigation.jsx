@@ -16,13 +16,17 @@ function Navigation({ isLoaded }) {
             </div>
          </NavLink>
          {isLoaded && (
-            <div className="profile-button">
-               <ProfileButton user={sessionUser} />
-            </div>
+            <>
+               {sessionUser ? (
+                  <NavLink to="/spots/new">Create a new stadium</NavLink>
+               ) : null}
+               <div className="profile-button">
+                  <ProfileButton user={sessionUser} />
+               </div>
+            </>
          )}
       </div>
    );
 }
 
 export default Navigation;
-

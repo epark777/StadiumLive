@@ -103,6 +103,27 @@
    padding: 10px;
    color: #333;
 }
+.spot-price:after {
+   content: " / night";
+   font-weight: normal;
+   font-size: 20px;
+   color: #666;
+ }
+
+.tooltip {
+   position: absolute;
+   background-color: beige;  /* Dark background */
+   color: black;
+   padding: 5px 10px;
+   border-radius: 5px;
+   font-size: 12px;
+   top: -40px;  /* Adjust this value to position the tooltip above the spot image */
+   left: 50%;
+   transform: translateX(-50%);
+   white-space: nowrap;  /* Prevent text from wrapping */
+   z-index: 10;
+   pointer-events: none;  /* Ensure the tooltip itself isn't clickable */
+ }
 
 @media (max-width: 768px) {
    .spots-grid {
