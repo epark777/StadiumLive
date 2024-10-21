@@ -92,7 +92,7 @@ export default function UpdateSpot() {
         err.image = 'Image URL must end in .png, .jpg, or .jpeg';
      }
 
-     setAddress(err);
+     setErrors(err);
 
       if (Object.keys(err).length > 0) {
          return;
