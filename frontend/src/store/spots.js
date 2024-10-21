@@ -200,6 +200,7 @@ export const deleteReview = (reviewId, spotId) => async (dispatch) => {
    if (res.ok) {
       await dispatch(getSpotById(spotId));
       await dispatch(getSpotReview(spotId));
+      return true;
    } else {
       const error = await res.json();
       return error;

@@ -1,0 +1,54 @@
+.review-container {
+   padding: 20px;
+   background-color: white;
+   border-radius: 8px;
+   margin-bottom: 20px;
+   max-width: 600px;
+}
+
+.review-content {
+   margin-bottom: 30px;
+   padding: 15px;
+   background-color: white;
+   border-radius: 5px;
+}
+
+.review-content h2 {
+   font-size: 20px;
+   margin: 0 0 5px 0;
+   color: black;
+}
+
+.review-content h3 {
+   font-size: 14px;
+   color: rgb(87, 85, 85);
+   margin-bottom: 10px;
+}
+
+.review-content p {
+   font-size: 16px;
+   color: rgb(132, 131, 131);
+   margin-bottom: 10px;
+}
+
+.user-review {
+   display: flex;
+   gap: 10px;
+}
+
+.user-review button {
+   padding: 5px 10px;
+   font-size: 14px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.user-review .delete-button {
+   background-color: rgb(183, 49, 49);
+   color: white;
+}
+
+.user-review .delete-button:hover {
+   background-color: darkred;
+}

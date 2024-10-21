@@ -3,17 +3,14 @@ import { useParams } from 'react-router-dom';
 import * as spotActions from '../../store/spots';
 import { useEffect } from 'react';
 import './SpotsDetails.css';
+import Reviews from '../Reviews';
+import { MdStarBorderPurple500 } from 'react-icons/md';
 
 export default function SpotsDetails() {
    const dispatch = useDispatch();
    const { id } = useParams();
 
-   useEffect(() => {
-      console.log('Spot IDddd:', id);
-   }, [id]);
-
    const spot = useSelector((state) => state.spots[id]);
-   //    const reviews = useSelector((state) => state.spots[id].Reviews || []);
 
    useEffect(() => {
       const fetch = async () => {
@@ -41,10 +38,10 @@ export default function SpotsDetails() {
 
    const spotImages = spot.SpotImages;
 
-   const {firstName, lastName} = spot.Owner || {
+   const { firstName, lastName } = spot.Owner || {
       firstName: null,
-      lastName: null
-   }
+      lastName: null,
+   };
 
    return (
       <div className="spot-view-container">
@@ -79,7 +76,7 @@ export default function SpotsDetails() {
                <div className="spot-info-container">
                   <div className="spot-desc">
                      <h2>
-                        Hosted by: {firstName} {lastName} 
+                        Hosted by: {firstName} {lastName}
                      </h2>
                      <p>{description}</p>
                   </div>
@@ -90,6 +87,8 @@ export default function SpotsDetails() {
                      <h2>${price}</h2>
                   </div>
                   <div className="spot-reviews-ratings">
+                     <MdStarBorderPurple500 />
+
                      {numReviews
                         ? `${avgStarRating.toFixed(2)} · ${numReviews} review${
                              numReviews !== 1 ? 's' : ''
@@ -105,6 +104,16 @@ export default function SpotsDetails() {
                </div>
             </div>
          </div>
+         <hr className="line" />
+         <h2 className='review-header'>
+            <MdStarBorderPurple500 />
+            {numReviews
+               ? `${avgStarRating.toFixed(2)} · ${numReviews} review${
+                    numReviews !== 1 ? 's' : ''
+                 }`
+               : 'NEW'}
+         </h2>
+         <Reviews />
       </div>
    );
 }

@@ -1,0 +1,85 @@
+.create-spot {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.create-spot-container {
+    background-color: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.create-header h2 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.spot-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.create-spot-field input,
+.create-spot-input,
+.create-spot-desc {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.create-spot-desc {
+    height: 100px;
+    resize: none;
+}
+
+.create-spot-error {
+    color: red;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.two-create-spot {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.two-create-spot .create-spot-field {
+    flex: 1;
+}
+
+.line {
+    border: 0;
+    height: 1px;
+    background-color: darkgray;
+    margin: 20px 0;
+}
+
+.create-spot-button button {
+    width: 100%;
+    padding: 12px;
+    background-color: coral;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.create-spot-button button:hover {
+    background-color: darkred;
+}

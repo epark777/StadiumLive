@@ -1,0 +1,54 @@
+.delete-modal {
+    background-color: beige;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+ }
+ 
+ .delete-modal h1 {
+    font-size: 25px;
+    color: black;
+    margin-bottom: 10px;
+    font-weight: bold;
+ }
+ 
+ .delete-modal p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+ }
+ 
+ .decision-delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+ }
+
+ 
+ .delete-button-yes{
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: lightcoral;
+    color: white;
+    width: 80%;
+
+ }
+ 
+ .delete-button-no {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(132, 131, 131);
+    color: white;
+    width: 80%;
+ }
+ 
