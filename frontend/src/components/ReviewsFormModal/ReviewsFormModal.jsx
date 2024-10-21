@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { makeReview } from '../../store/spots';
+import './ReviewsFormModal.css';
 
 export default function ReviewFormModal({ spotId, onReviewPost }) {
    const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export default function ReviewFormModal({ spotId, onReviewPost }) {
    const handleStarLeave = () => setHoverRating(rating);
 
    const star = (i) =>
-      i <= (hoverRating || rating) ? { color: 'yellow' } : { color: 'grey' };
+      i <= (hoverRating || rating) ? { color: 'gold' } : { color: 'grey' };
 
 
    return (
@@ -76,10 +77,10 @@ export default function ReviewFormModal({ spotId, onReviewPost }) {
                      onMouseLeave={handleStarLeave}
                      onClick={() => handleStarClick(i)}
                   >
-                    ☆
+                    ☆ 
                   </span>
                ))}
-               <span className="star-label">Stars</span>
+               <span className="star-label"> Stars</span>
             </div>
             <button className="review-submit" type="submit" disabled={disabled}>
                Submit Review
