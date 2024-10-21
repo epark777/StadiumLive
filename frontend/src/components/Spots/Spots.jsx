@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import * as spotActions from '../../store/spots';
 import { NavLink } from 'react-router-dom';
 import './Spots.css';
+import { MdStarBorderPurple500 } from 'react-icons/md';
 
 export default function Spots() {
    const dispatch = useDispatch();
@@ -33,13 +34,9 @@ export default function Spots() {
                   className="spot-link"
                   onMouseEnter={() => setShowTooltip(spot.id)}
                   onMouseLeave={() => setShowTooltip(null)}
-                  style={{cursor: 'pointer'}}
+                  style={{ cursor: 'pointer' }}
                >
                   <div className="spot-box">
-                     <div className="spot-name">
-                        <h2>{spot.name}</h2>
-                     </div>
-
                      <div className="spot-image-box">
                         <img
                            className="spot-image"
@@ -54,10 +51,12 @@ export default function Spots() {
                               {spot.city}, {spot.state}
                            </p>
                         </div>
-                     </div>
-
-                     <div className="spot-rating-box">
-                        {spot.avgRating ? spot.avgRating.toFixed(2) : 'NEW'}
+                        <div className="spot-rating-box">
+                           <MdStarBorderPurple500 />
+                           {spot.avgStarRating
+                              ? spot.avgStarRating.toFixed(2)
+                              : 'NEW'}
+                        </div>
                      </div>
 
                      <div className="spot-price">${spot.price}</div>

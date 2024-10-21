@@ -5,7 +5,8 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { LuMenuSquare } from 'react-icons/lu';
 
 function ProfileButton({ user }) {
    const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function ProfileButton({ user }) {
       return () => document.removeEventListener('click', closeMenu);
    }, [showMenu]);
 
-   const navigate = useNavigate()
+   const navigate = useNavigate();
 
    const closeMenu = () => setShowMenu(false);
 
@@ -46,7 +47,11 @@ function ProfileButton({ user }) {
 
    return (
       <>
-         <button onClick={toggleMenu}>
+         <button
+            onClick={toggleMenu}
+            style={{ border: 'none', backgroundColor: 'transparent' }}
+         >
+            <LuMenuSquare />
             <FaUserCircle />
          </button>
          <ul className={ulClassName} ref={ulRef}>
@@ -55,6 +60,11 @@ function ProfileButton({ user }) {
                   <li> Hello, {user.firstName}</li>
                   <li>{user.email}</li>
                   <li>
+                     <hr className="line" />
+                     <NavLink to="spots/current" className="manage-link">
+                        Manage Spots
+                     </NavLink>
+                     <hr className="line" />
                      <button onClick={logout}>Log Out</button>
                   </li>
                </>

@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       lat: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
         validate: {
           checkSize(lat) {
             if (lat < -90 || lat > 90) {
@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       lng: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
         validate: {
           checkSize(lng) {
             if (lng < -180 || lng > 180) {

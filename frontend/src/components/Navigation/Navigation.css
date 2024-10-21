@@ -1,62 +1,78 @@
 .navbar {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     height: 100px;
-     font-size: 20px;
-     border-bottom: 1px black solid;
-     padding: 0px 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 100px;
+   font-size: 20px;
+   border-bottom: 1px black solid;
+   padding: 0px 20px;
 }
 
 .logo {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     color: black;
-     font-size: 25px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: black;
+   font-size: 25px;
 }
 
 .logo svg {
-     font-size: 50px;
+   font-size: 50px;
 }
 
 .navbar a {
-     text-decoration: none;
+   text-decoration: none;
 }
 
 .profile-button {
-     display: flex;
-     align-items: center;
-     cursor: pointer;
-     background: transparent;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   background: transparent;
 }
 
 .profile-button svg {
-     font-size: 35px;
-     color: black;
+   font-size: 35px;
+   color: black;
 }
 
-
 .profile-dropdown {
-     position: absolute;
-     top: 75px;
-     right: 20px;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     width: max-content;
-     list-style-type: none;
-     padding: 10px;
-     background-color: white;
-     border: 1px solid black;
-     border-radius: 8px;
-     z-index: 100;
+   position: absolute;
+   top: 75px;
+   right: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: max-content;
+   list-style-type: none;
+   padding: 10px;
+   background-color: white;
+   border: 1px solid black;
+   border-radius: 8px;
+   z-index: 100;
 }
 
 .profile-dropdown.hidden {
-     display: none;
+   display: none;
 }
 
 .profile-dropdown li:hover {
-     background-color: none;
+   background-color: none;
+}
+
+.create-spot-button {
+   font-size: 25px;
+   color: black;
+   text-decoration: none;
+   margin-right: 20px;
+}
+
+.create-spot-button:hover {
+     text-decoration: underline;
+     font-weight: bold;
+}
+
+.right-side {
+     display: flex;
+     align-items: center;
 }

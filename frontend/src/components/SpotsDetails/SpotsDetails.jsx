@@ -104,7 +104,7 @@ export default function SpotsDetails() {
                </div>
             </div>
          </div>
-         <hr className="line" />
+         <hr className='line' />
          <h2 className='review-header'>
             <MdStarBorderPurple500 />
             {numReviews

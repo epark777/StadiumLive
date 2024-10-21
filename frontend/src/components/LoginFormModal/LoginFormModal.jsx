@@ -33,7 +33,7 @@ function LoginFormModal() {
    };
 
    return (
-      <div className="login-page">
+      <div className="login-page" >
          <h1 className='login-header'>Log In</h1>
          <form onSubmit={handleSubmit} className='login-form'>
             <label className='login-label'>

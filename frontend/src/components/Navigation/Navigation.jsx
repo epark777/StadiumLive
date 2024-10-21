@@ -15,16 +15,18 @@ function Navigation({ isLoaded }) {
                <a>StadiumLive</a>
             </div>
          </NavLink>
+         <div className='right-side'>
          {isLoaded && (
             <>
                {sessionUser ? (
-                  <NavLink to="/spots/new">Create a new stadium</NavLink>
+                  <NavLink to="/spots/new" className="create-spot-button">Create a new stadium</NavLink>
                ) : null}
                <div className="profile-button">
                   <ProfileButton user={sessionUser} />
                </div>
             </>
          )}
+         </div>
       </div>
    );
 }

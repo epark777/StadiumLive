@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { newSpot, editSpot } from '../../store/spots';
-import { useNavigate } from 'react-router-dom';
-import './CreateSpot.css';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { editSpot, getSpotById } from '../../store/spots';
+import { useNavigate, useParams } from 'react-router-dom';
+import './UpdateSpot.css';
 
-export default function CreateSpot() {
+export default function UpdateSpot() {
    const dispatch = useDispatch();
    const nav = useNavigate();
+   const { id } = useParams();
+   const spot = useSelector((state) => state.spots[id]);
 
    const [country, setCountry] = useState('');
    const [address, setAddress] = useState('');
@@ -18,59 +20,79 @@ export default function CreateSpot() {
    const [images, setImages] = useState([]);
    const [errors, setErrors] = useState({});
 
+   useEffect(() => {
+      if (spot) {
+         setCountry(spot.country);
+         setAddress(spot.address);
+         setCity(spot.city);
+         setState(spot.state);
+         setDescription(spot.description);
+         setPrice(spot.price);
+         setName(spot.name);
+         if (spot.SpotImages && spot.SpotImages.length > 0){
+            setImages(spot.SpotImages);
+         } else {
+            setImages([])
+         }
+
+      } else {
+         dispatch(getSpotById(id));
+      }
+   }, [dispatch, id, spot]);
+
    const handleSubmit = async (e) => {
       e.preventDefault();
 
       setErrors({});
       let err = {};
       if (!country) {
-         err.country = 'Country is required';
-      }
-      if (!address) {
-         err.address = 'Street Address is required';
-      }
-      if (!city) {
-         err.city = 'City is required';
-      }
-      if (!state) {
-         err.state = 'State is required';
-      }
-      if (!name) {
-         err.name = 'Title is required';
-      }
-      if (name.length > 50) {
-         err.name = 'Name must be less than 50 characters';
-      }
-      if (!price) {
-         err.price = 'Price is required';
-      }
-      if (price < 0) {
-         err.price = 'Price must be greater than $0';
-      }
-      if (description.length < 30) {
-         err.description = 'Description needs 30 or more characters';
-      }
-      if (description.length > 255) {
-         err.description = 'Description can not exceed 255 characters';
-      }
-      if (!images[0]) err.previewImage = 'Preview Image is required';
+        err.country = 'Country is required';
+     }
+     if (!address) {
+        err.address = 'Street Address is required';
+     }
+     if (!city) {
+        err.city = 'City is required';
+     }
+     if (!state) {
+        err.state = 'State is required';
+     }
+     if (!name) {
+        err.name = 'Title is required';
+     }
+     if (name.length > 50) {
+        err.name = 'Name must be less than 50 characters';
+     }
+     if (!price) {
+        err.price = 'Price is required';
+     }
+     if (price < 0) {
+        err.price = 'Price must be greater than $0';
+     }
+     if (description.length < 30) {
+        err.description = 'Description needs 30 or more characters';
+     }
+     if (description.length > 255) {
+        err.description = 'Description can not exceed 255 characters';
+     }
+     if (!images[0]) err.previewImage = 'Preview Image is required';
 
-      const isValidImage = (url) => {
-         return (
-            url.endsWith('.png') ||
-            url.endsWith('.jpg') ||
-            url.endsWith('.jpeg')
-         );
-      };
+     const isValidImage = (url) => {
+        return (
+           url.endsWith('.png') ||
+           url.endsWith('.jpg') ||
+           url.endsWith('.jpeg')
+        );
+     };
 
-      const hasInvalidImage =
-         images.length > 1 && !images.every(({ url }) => isValidImage(url));
+     const hasInvalidImage =
+        images.length > 1 && !images.every(({ url }) => isValidImage(url));
 
-      if (hasInvalidImage) {
-         err.image = 'Image URL must end in .png, .jpg, or .jpeg';
-      }
+     if (hasInvalidImage) {
+        err.image = 'Image URL must end in .png, .jpg, or .jpeg';
+     }
 
-      setAddress(err);
+     setAddress(err);
 
       if (Object.keys(err).length > 0) {
          return;
@@ -86,14 +108,9 @@ export default function CreateSpot() {
          description,
       };
       try {
-         const createdSpot = await dispatch(newSpot(spotsDetails, images[0]));
-         if (createdSpot) {
-            if (images.length > 1) {
-               await dispatch(
-                  editSpot(spotsDetails, images.slice(1), createdSpot.id),
-               );
-            }
-            nav(`/spots/${createdSpot.id}`);
+         const updatedSpot = await dispatch(editSpot(spotsDetails, images[0], id));
+         if(updatedSpot) {
+            nav(`/spots/${updatedSpot.id}`)
          }
       } catch (err) {
          console.error(err);
@@ -104,7 +121,7 @@ export default function CreateSpot() {
       <div className="create-spot">
          <div className="create-spot-container">
             <div className="create-header">
-               <h1>Create a new Stadium</h1>
+               <h1>Update Your Spot</h1>
                <h2>Where is your Stadium located?</h2>
                <p>
                   Guests will only get your exact address once they booked a
@@ -223,6 +240,7 @@ export default function CreateSpot() {
                      setImages([
                         ...images,
                         { url: e.target.value, preview: true },
+                        ...images.slice(1),
                      ])
                   }
                ></input>
@@ -287,7 +305,7 @@ export default function CreateSpot() {
                )}
                <hr className="line" />
                <div className="create-spot-button">
-                  <button type="submit">Create Spot</button>
+                  <button type="submit">Update Spot</button>
                </div>
             </form>
          </div>

@@ -1,0 +1,126 @@
+.manage-page {
+   width: 100%;
+   padding: 20px;
+
+ }
+ 
+ .manage-page h1 {
+   text-align: left;
+   font-size: 50px;
+   margin-bottom: 20px;
+   font-weight: bold;
+   color: black;
+ }
+
+ .create-spot-link {
+   font-size: 25px;
+ }
+ 
+ .spots-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 20px;
+   grid-row-gap: 40px;
+   padding: 24px;
+   justify-content: center;
+ }
+ 
+ .spot-box {
+   display: flex;
+   flex-direction: column;
+   border: none;
+   border-radius: 10px;
+   background-color: white;
+   height: 100%;
+   cursor: pointer;
+ }
+ 
+ .spot-box:hover {
+   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .spot-image-box {
+   position: relative;
+   width: 100%;
+   padding-top: 70%;
+   overflow: hidden;
+   flex-shrink: 0;
+ }
+ 
+ .spot-image {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+ }
+ 
+ 
+ .spot-details-box {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+ }
+ 
+ .spot-location p {
+   margin: 0;
+   font-size: 25px;
+   color: rgb(90, 89, 89);
+ }
+ 
+ .spot-rating-box {
+   text-align: center;
+   font-size: 25px;
+   color: teal;
+   margin-top: 8px;
+ }
+ 
+ .spot-price {
+   text-align: left;
+   font-size: 20px;
+   font-weight: bold;
+   padding: 10px;
+   color: black;
+ }
+ 
+ .spot-price:after {
+   content: " / night";
+   font-weight: normal;
+   font-size: 20px;
+   color: rgb(90, 89, 89);
+ }
+
+ 
+ @media (max-width: 768px) {
+   .spots-grid {
+     grid-template-columns: 1fr;
+   }
+ 
+   .manage-page h1 {
+     font-size: 1.8rem;
+   }
+ }
+ 
+ @media (min-width: 769px) and (max-width: 1024px) {
+   .spots-grid {
+     grid-template-columns: repeat(2, 1fr);
+   }
+ }
+ 
+ @media (min-width: 1025px) and (max-width: 1400px) {
+   .spots-grid {
+     grid-template-columns: repeat(3, 1fr);
+   }
+ }
+ 
+ @media (min-width: 1401px) {
+   .spots-grid {
+     grid-template-columns: repeat(4, 1fr);
+   }
+ 
+   .spot-box {
+     max-width: 360px;
+     margin: 0 auto;
+   }
+ }

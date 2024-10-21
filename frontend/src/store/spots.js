@@ -66,11 +66,9 @@ const handleImages = async (spotId, images) => {
 
 export const getAllSpots = () => async (dispatch) => {
    const res = await csrfFetch('/api/spots');
-   console.log("fetching all spots")
    if (res.ok) {
       const data = await res.json();
       dispatch(fetchAllSpots(data.Spots));
-      console.log("fetched spots:", data.Spots)
       return data.Spots;
    } else {
       const error = await res.json();
@@ -84,10 +82,8 @@ export const getCurrentSpots = () => async (dispatch) => {
       const data = await res.json();
       dispatch(fetchAllSpots(data.Spots));
       return data.Spots;
-   } else {
-      const error = await res.json();
-      return error;
-   }
+   } 
+   return res;
 };
 
 export const getSpotById = (id) => async (dispatch) => {
